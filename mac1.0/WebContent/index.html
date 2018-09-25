@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>南理ACM成员信息注册</title>
+<style type="text/css">
+.whole{margin-left: auto;margin-right: auto;width: 70%;}
+h1 {text-align: center;}
+#tishi1 {color: red; text-align: center;}
+#tishi1 {color: red; text-align: center;}
+table{border-collapse: collapse; width: 70%; margin-left: auto;margin-right: auto; }
+tr,td{width: 80px; height: 50px;border: 1px solid black;}
+</style>
+<script type="text/javascript">
+	function show1(){
+		if(document.getElementById("1").checked){
+			document.getElementById("other1").style.display="block";
+		}
+		
+	}
+	function show2(){
+		if(document.getElementById("2").checked){
+			document.getElementById("other2").style.display="block";
+		}
+		
+	}
+	function check(){
+		var sexV = false;
+		var sex = document.getElementsByName("sex");
+		for(var i =0;i<sex.length;i++){
+			if(sex[i].checked){
+				sexV=true;
+				break;
+			}
+		}
+		var graV = false;
+		var gra = document.getElementsByName("gra");
+		for(var j =0;j<gra.length;j++){
+			if(gra[j].checked){
+				graV=true;
+				break;
+			}
+		}
+		var depV = false;
+		var dep = document.getElementsByName("dep");
+		for(var q =0;q<dep.length;q++){
+			if(dep[q].checked){
+				depV=true;
+				break;
+			}
+		}
+		var cnoV = false;
+		var cno = document.getElementsByName("cno");
+		for(var p =0;p<cno.length;p++){
+			if(cno[p].checked){
+				cnoV=true;
+				break;
+			}
+		}
+		
+		if(form1.name.value==""){
+			alert("姓名不能为空");
+		}else if(form1.sno.value==""||form1.sno.value.length!=12){
+			alert("请输入有效的12位学号");
+		}else if(form1.tel.value==""||form1.tel.value.length!=11){
+			alert("请输入有效的电话号码");
+		}else if(sexV == false){
+			alert("请选择性别");
+		}else if(graV == false){
+			alert("请选择年级")
+		}else if(depV == false){
+			alert("请选择学院");
+		}else if(form1.major.value == ""){
+			alert("专业不能为空");
+		}else if(cnoV == false){
+			alert("请选择班级");
+		}else if(form1.account.value == ""){
+			alert("请填写南理oj昵称");
+		}else{
+			form1.submit();
+		}
+	}
+
+</script>
+<style type="text/css">
+ body {
+	background: url("imag/witestone.jpg");
+}
+</style>
+</head>
+<body>
+<div class="whole">
+
+	<div class="top">
+		<h1>请填写下列信息</h1>
+		<p id="tishi1">请按照真实情况认真填写</p>
+		<hr>
+		
+	</div>
+	<div class="middl">
+		<form action="check.jsp" method="post" name="form1">
+			<table>
+				<tr>
+					<td style="text-align: right;">姓名:</td>
+					<td><input type="text" name="name" placeholder="请输入真实姓名"></td>
+				</tr>
+				<tr>
+					<td style="text-align: right;">学号:</td>
+					<td><input type="text" name="sno" placeholder="请输入完整12位学号"></td>
+				</tr>
+				<tr>
+					<td style="text-align: right;">电话号码:</td>
+					<td><input type="tel" name="tel" placeholder="请输入11位有效手机号码"></td>
+				</tr>
+				<tr>
+					<td style="text-align: right;">性别</td>
+					<td>
+						<input type="radio" name="sex" value="男">男<br>
+						<input type="radio" name="sex" value="女">女<br>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right;">年级</td>
+					<td>
+						<input type="radio" name="gra" value="18">18级<br>
+						<input type="radio" name="gra" value="17">17级<br>
+						<input type="radio" name="gra" value="16">16级<br>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right;">院系</td>
+					<td>
+						<input type="radio" name="dep" value="计算机系">计算机<br>
+						<input type="radio" name="dep" value="电子系">电子<br>
+						<input type="radio" name="dep" value="其他" id="1" onclick="show1()"/>其他<br>
+						<input type="text" name="other1" id="other1" placeholder="非以上院系请在此填写" style="display: none;">
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right;">专业：</td>
+					<td><input type="text" name="major" placeholder="请勿简写（例：软件工程）"></td>
+				</tr>
+				<tr>
+					<td style="text-align: right;">班级：</td>
+					<td>
+						<input type="radio" name="cno" value="1">1<br>
+						<input type="radio" name="cno" value="2">2<br>
+						<input type="radio" name="cno" value="3">3<br>
+						<input type="radio" name="cno" value="4">4<br>
+						<input type="radio" name="cno" value="其他" id="2" onclick="show2()"/>其他<br>
+						<input type="text" name="other2" id="other2" placeholder="请填数字班号" style="display: none;">
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right;">南理oj账号昵称：</td>
+					<td><input type="text" name="account"><br><font color="red"> 填写南理oj的账号昵称，若没有请先注册，若不知道填什么，请先咨询一下管理，请勿乱填！</font></td>
+				</tr>
+				<tr>
+					<td style="text-align: right; "><input type="button" value="确定" style="height:40px; width: 100px;" onclick="check()"></td>
+					<td><input type="reset" value="重置"  style="height:40px; width: 100px;"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div class="button">
+	
+	</div>
+	</div>
+</body>
+</html>
